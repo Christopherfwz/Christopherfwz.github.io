@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>CSCI-570-Lecture-2 · Wenzhu Feng&#39;s Studio</title>
+    <title>CSCI 570 Lecture 2 · Wenzhu Feng&#39;s Studio</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/">Wenzhu Feng&#39;s Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">CSCI-570-Lecture-2</a>
+                <a href="#" class="post-name">CSCI 570 Lecture 2</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            CSCI-570-Lecture-2
+            CSCI 570 Lecture 2
             <!-- 404 -->
             
         </h1>
@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">226</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">982</span>Reading time: <span class="post-count reading-time">6 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -408,7 +408,7 @@ height:50vh;
 <li>perform complexity analysis</li>
 </ul>
 <h1 id="Stable-matching"><a href="#Stable-matching" class="headerlink" title="Stable matching"></a>Stable matching</h1><h2 id="perfect-matching"><a href="#perfect-matching" class="headerlink" title="perfect matching"></a>perfect matching</h2><p>Each member of M and each member of N ends up with matched to someone else.<br><strong>Neither singlehood nor polygamy</strong></p>
-<h2 id="instability"><a href="#instability" class="headerlink" title="instability"></a>instability</h2><p>There are two pairs: (m,w) (m’,w’).\<br>But m prefer w’ to w, w’ prefer m to m’.<br>Such a pair (m,w’) is an instability WRT(with respect to) S</p>
+<h2 id="instability"><a href="#instability" class="headerlink" title="instability"></a>instability</h2><p>There are two pairs: (m,w) (m’,w’).<br>But m prefer w’ to w, w’ prefer m to m’.<br>Such a pair (m,w’) is an instability WRT(with respect to) S</p>
 <h2 id="stable-matching"><a href="#stable-matching" class="headerlink" title="stable matching"></a>stable matching</h2><p>To say a matching S is <em>stable</em>, we have to satisfy:</p>
 <ol>
 <li>S is a <em>perfect</em> matching</li>
@@ -420,7 +420,31 @@ height:50vh;
 <li><strong>There exists a stable matching for every set of preference lists</strong></li>
 </ul>
 <h2 id="Designing-the-algorithm-Gale-Shapley-algorithm"><a href="#Designing-the-algorithm-Gale-Shapley-algorithm" class="headerlink" title="Designing the algorithm (Gale-Shapley algorithm)"></a>Designing the algorithm (Gale-Shapley algorithm)</h2><h3 id="concrete-description"><a href="#concrete-description" class="headerlink" title="concrete description"></a>concrete description</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Initially all m ∈ M and w ∈ W are free</span><br><span class="line">While there is a man m who is free and hasn’t proposed to every woman</span><br><span class="line">  Choose such a man m</span><br><span class="line">  Let w be the highest-ranked woman in m’s preference list to whom m has not yet proposed</span><br><span class="line">  If w is free then</span><br><span class="line">    (m, w) become engaged</span><br><span class="line">    Else w is currently engaged to m′</span><br><span class="line">      If w prefers m′ to m then</span><br><span class="line">        m remains free</span><br><span class="line">      Else w prefers m to m′</span><br><span class="line">        (m, w) become engaged m′ becomes free</span><br><span class="line">      Endif</span><br><span class="line">  Endif</span><br><span class="line">Endwhile</span><br><span class="line">Return the set S of engaged pairs</span><br></pre></td></tr></table></figure>
-<h2 id="Analyzing-the-algorithm"><a href="#Analyzing-the-algorithm" class="headerlink" title="Analyzing the algorithm"></a>Analyzing the algorithm</h2><p>\<br>\<br>\<br>\<br>\<br>\<br>\<br>5</p>
+<h2 id="Analyzing-the-algorithm"><a href="#Analyzing-the-algorithm" class="headerlink" title="Analyzing the algorithm"></a>Analyzing the algorithm</h2><h3 id="property-1"><a href="#property-1" class="headerlink" title="property 1"></a>property 1</h3><p><strong>w remains engaged from the point at which she receives her first proposal; and the sequence of partners to which she is engaged gets better and better (in terms of her preference list)</strong></p>
+<h3 id="property-2"><a href="#property-2" class="headerlink" title="property 2"></a>property 2</h3><p><strong>The sequence of women to whom m proposes gets worse and worse (in terms of his preference list).</strong></p>
+<h3 id="property-3"><a href="#property-3" class="headerlink" title="property 3"></a>property 3</h3><p><strong>The G-S algorithm terminates after at most n<sup>2</sup> iterations of the While loop.</strong><br>Each time through the while loop a man proposes to a new woman.<br>There are only n<sup>2</sup> possible proposals.</p>
+<h3 id="property-4"><a href="#property-4" class="headerlink" title="property 4"></a>property 4</h3><p><strong>If m is free at some point in the execution of the algorithm, then there is a woman to whom he has not yet proposed.</strong><br>Suppose there comes a point when m is free but has already proposed to every woman. It can’t be true because if every woman rejected him, they must have been engaged, however the num of man &amp; the num of woman are equal.</p>
+<h3 id="property-5"><a href="#property-5" class="headerlink" title="property 5"></a>property 5</h3><p><strong>The set S returned at termination is a perfect matching.</strong><br>If not, there’s a free man after proposed to every woman, according to property 4, it can’t be true.</p>
+<h3 id="property-6"><a href="#property-6" class="headerlink" title="property 6"></a>property 6</h3><p><strong>Consider an execution of the G-S algorithm that returns a set of pairs S. The set S is a stable matching.</strong><br>Suppose there’s an instability in the perfect matching mentioned in property 5: in S, there’re pairs such as (m, w) &amp; (m’&amp; w’). And m prefer w’ to w. w’ prefer m to m’.<br>This can’t be true, because if</p>
+<ol>
+<li>m had proposed to w’, but w’ finally ends up with m’, so m’ ranked higher than m for w’. It contradicts to our assumption.</li>
+<li>m hadn’t proposed to w’, so in m’s eye, w ranks higher than w’. It also contradicts to our assumption.<br>Thus, there’s no instability in the perfect matching. So it’s a stable matching.</li>
+</ol>
+<h3 id="property-7"><a href="#property-7" class="headerlink" title="property 7"></a>property 7</h3><p><strong>Every execution of the G-S algorithm results in the set S∗:{(m, best(m)) : m ∈ M}.(In the stable matching S∗, each man is paired with his best valid partner)</strong><br>Def:<br><strong>valid partner</strong>: We will say that a woman w is a <strong>valid partner</strong> of a man m if there is a stable matching that contains the pair (m, w)<br><strong>best valid partner</strong>:We will say that w is the <strong>best valid partner</strong> of m if w is a valid partner of m, and no woman whom m ranks higher than w is a valid partner of his<br><strong>Proof</strong>: Suppose, by way of contradiction, that some execution E of the G-S algorithm results in a matching S in which some man is paired with a woman who is not his best valid partner.<br>Let m be the first man to be rejected by his valid partner w during one execution E.</p>
+<p>Because its m’s first time to be rejected, w must rank first on m’s preference list. Again, since men propose in decreasing order of preference, and since this is the first time such a rejection has occurred, it must be that w is m’s best valid partner best(m).</p>
+<p>reasons for rejection:</p>
+<ol>
+<li>w has already engaged by a guy which is prefered by w to m.</li>
+<li>w broke her proposal to m for a better one.</li>
+</ol>
+<p>Let the guy be m’.</p>
+<p>As mentioned, w is m’s valid partner, so, (m, w) is a valid pair in S’, suppose m’ is paired with another woman called w’ in this matching.</p>
+<p>Back to S, m is the first guy to be rejected.<br>m’ engaged with w without rejection, w ranks 1<sup>st</sup> for m’, so <strong>for m’, w &gt; w’</strong>.<br>w reject m to engage with m’, <strong>so for w, m’ ranks higher than m</strong>.</p>
+<p>Thus, (m’, w) is an instability WRT S’. This contradicts our claim that S′ is stable and hence contradicts our initial assumption.</p>
+<h3 id="property-8"><a href="#property-8" class="headerlink" title="property 8"></a>property 8</h3><p><strong>In the stable matching S∗, each woman is paired with her worst valid partner.</strong></p>
+<p><strong>Proof</strong>:Suppose (m, w) in S such that m is not the worst valid partner of w. Then there is a stable matching S′ in which w is paired with a man m’ whom she likes less than m(<strong>So, for w, m &gt; m’</strong>). In S’, m is paired with a woman called w’. According to property 7, w is the best valid partner for m. <strong>So for m, w &gt; w’</strong>.</p>
+<p>Thus, (m, w) is instability WRT S’, contradicting the claim that S′ is stable and hence contradicting our initial assumption</p>
+<p>\<br>\<br>\<br>\<br>\<br>\<br>\<br>5</p>
 
     </article>
     <!-- license  -->
@@ -429,7 +453,7 @@ height:50vh;
             <p>Author：<a href="https://fengwenzhu.com">Wenzhu Feng</a>
             </p><p>原文链接：<a href="https://fengwenzhu.com/2019/08/28/CSCI-570-Lecture-2/">https://fengwenzhu.com/2019/08/28/CSCI-570-Lecture-2/</a>
             </p><p>发表日期：<a href="https://fengwenzhu.com/2019/08/28/CSCI-570-Lecture-2/">August 28th 2019, 6:52:50 pm</a>
-            </p><p>更新日期：<a href="https://fengwenzhu.com/2019/08/28/CSCI-570-Lecture-2/">August 28th 2019, 11:43:38 pm</a>
+            </p><p>更新日期：<a href="https://fengwenzhu.com/2019/08/28/CSCI-570-Lecture-2/">August 30th 2019, 4:48:45 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -552,7 +576,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Instructions-to-solve-problems"><span class="toc-number">1.</span> <span class="toc-text">Instructions to solve problems</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Four-steps"><span class="toc-number">1.1.</span> <span class="toc-text">Four steps:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Stable-matching"><span class="toc-number">2.</span> <span class="toc-text">Stable matching</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#perfect-matching"><span class="toc-number">2.1.</span> <span class="toc-text">perfect matching</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#instability"><span class="toc-number">2.2.</span> <span class="toc-text">instability</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stable-matching"><span class="toc-number">2.3.</span> <span class="toc-text">stable matching</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Designing-the-algorithm-Gale-Shapley-algorithm"><span class="toc-number">2.4.</span> <span class="toc-text">Designing the algorithm (Gale-Shapley algorithm)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#concrete-description"><span class="toc-number">2.4.1.</span> <span class="toc-text">concrete description</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Analyzing-the-algorithm"><span class="toc-number">2.5.</span> <span class="toc-text">Analyzing the algorithm</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Instructions-to-solve-problems"><span class="toc-number">1.</span> <span class="toc-text">Instructions to solve problems</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Four-steps"><span class="toc-number">1.1.</span> <span class="toc-text">Four steps:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Stable-matching"><span class="toc-number">2.</span> <span class="toc-text">Stable matching</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#perfect-matching"><span class="toc-number">2.1.</span> <span class="toc-text">perfect matching</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#instability"><span class="toc-number">2.2.</span> <span class="toc-text">instability</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stable-matching"><span class="toc-number">2.3.</span> <span class="toc-text">stable matching</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Designing-the-algorithm-Gale-Shapley-algorithm"><span class="toc-number">2.4.</span> <span class="toc-text">Designing the algorithm (Gale-Shapley algorithm)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#concrete-description"><span class="toc-number">2.4.1.</span> <span class="toc-text">concrete description</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Analyzing-the-algorithm"><span class="toc-number">2.5.</span> <span class="toc-text">Analyzing the algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#property-1"><span class="toc-number">2.5.1.</span> <span class="toc-text">property 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#property-2"><span class="toc-number">2.5.2.</span> <span class="toc-text">property 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#property-3"><span class="toc-number">2.5.3.</span> <span class="toc-text">property 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#property-4"><span class="toc-number">2.5.4.</span> <span class="toc-text">property 4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#property-5"><span class="toc-number">2.5.5.</span> <span class="toc-text">property 5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#property-6"><span class="toc-number">2.5.6.</span> <span class="toc-text">property 6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#property-7"><span class="toc-number">2.5.7.</span> <span class="toc-text">property 7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#property-8"><span class="toc-number">2.5.8.</span> <span class="toc-text">property 8</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -619,7 +643,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/28</span><a class="archive-post-title" href="/2019/08/28/CSCI-570-Lecture-2/">CSCI-570-Lecture-2</a>
+            <span class="archive-post-date">08/28</span><a class="archive-post-title" href="/2019/08/28/CSCI-570-Lecture-2/">CSCI 570 Lecture 2</a>
         </li>
     
     
